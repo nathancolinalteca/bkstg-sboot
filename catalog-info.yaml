@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bkstg-sboot
+  annotations:
+    github.com/project-slug: nathancolinalteca/bkstg-sboot
+spec:
+  type: other
+  lifecycle: unknown
+  owner: guests
