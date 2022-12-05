@@ -4,6 +4,7 @@ metadata:
   name: bkstg-sboot
   annotations:
     github.com/project-slug: nathancolinalteca/bkstg-sboot
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: other
   lifecycle: unknown
