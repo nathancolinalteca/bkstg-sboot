@@ -1,0 +1,2094 @@
+{
+	"info": {
+		"_postman_id": "ce223303-aa1e-4973-b164-e184f0644d81",
+		"name": "AP'Structure",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var token = pm.response.headers.get(\"x-authentication-token\");",
+									"pm.environment.set(\"auth-token\", token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "expert",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/interne/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ouvrages",
+			"item": [
+				{
+					"name": "données",
+					"item": [
+						{
+							"name": "séquences modales",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/interne/ouvrages/3/sequences-modales",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"interne",
+										"ouvrages",
+										"3",
+										"sequences-modales"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "attributs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/interne/ouvrages/1/attributs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"interne",
+										"ouvrages",
+										"1",
+										"attributs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete attribut",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/interne/ouvrages/2/modules/21/attributs/42",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"interne",
+										"ouvrages",
+										"2",
+										"modules",
+										"21",
+										"attributs",
+										"42"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete module",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/interne/ouvrages/2/modules/21",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"interne",
+										"ouvrages",
+										"2",
+										"modules",
+										"21"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ajouter attribut",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"module\" : \"typologie\",\r\n    \"nomChamp\" : \"ajouter un nouveau attribut test depuis maven\",\r\n    \"valeurChamp\": \" champ de test ajouté depuis maven\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/interne/ouvrages/1/attributs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"interne",
+										"ouvrages",
+										"1",
+										"attributs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "modifier des attributs",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"module\": \"identification\",\r\n        \"champs\": [\r\n            {\r\n                \"id\": 1,\r\n                \"nom\": \"maitreOuvrage\",\r\n                \"valeur\": \"maitre  modifié\",\r\n                \"editable\": true,\r\n                \"supprimable\": false,\r\n                \"ordre\": 1,\r\n                \"dynamique\": false\r\n            },\r\n            {\r\n                \"id\": 2,\r\n                \"nom\": \"denMOA\",\r\n                \"valeur\": \"Pont inconnu modifié\",\r\n                \"editable\": false,\r\n                \"supprimable\": false,\r\n                \"ordre\": 2,\r\n                \"dynamique\": false\r\n            },\r\n            {\r\n                \"id\": 3,\r\n                \"nom\": \"commune\",\r\n                \"valeur\": \"commune modifié\",\r\n                \"editable\": true,\r\n                \"supprimable\": false,\r\n                \"ordre\": 3,\r\n                \"dynamique\": false\r\n            },\r\n            {\r\n                \"id\": 4,\r\n                \"nom\": \"departement\",\r\n                \"valeur\": \"département modifié\",\r\n                \"editable\": true,\r\n                \"supprimable\": false,\r\n                \"ordre\": 4,\r\n                \"dynamique\": false\r\n            },\r\n            {\r\n                \"id\": 5,\r\n                \"nom\": \"voiePortee\",\r\n                \"valeur\": \"voie porté modifié\",\r\n                \"editable\": true,\r\n                \"supprimable\": false,\r\n                \"ordre\": 5,\r\n                \"dynamique\": false\r\n            },\r\n            {\r\n                \"id\": 6,\r\n                \"nom\": \"pr\",\r\n                \"valeur\": \"p.r. modifié\",\r\n                \"editable\": true,\r\n                \"supprimable\": false,\r\n                \"ordre\": 6,\r\n                \"dynamique\": false\r\n            },\r\n            {\r\n                \"id\": 7,\r\n                \"nom\": \"breche\",\r\n                \"valeur\": \"bréche modifié\",\r\n                \"editable\": true,\r\n                \"supprimable\": false,\r\n                \"ordre\": 7,\r\n                \"dynamique\": false\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"module\": \"typologie\",\r\n        \"champs\": [\r\n            {\r\n                \"id\": 11,\r\n                \"nom\": \"typeOuvrage\",\r\n                \"valeur\": \"type ouv x modifié\",\r\n                \"editable\": true,\r\n                \"supprimable\": false,\r\n                \"ordre\": 1,\r\n                \"dynamique\": false\r\n            },\r\n            {\r\n                \"id\": 12,\r\n                \"nom\": \"typeStructure\",\r\n                \"valeur\": \"structure y modifié\",\r\n                \"editable\": true,\r\n                \"supprimable\": false,\r\n                \"ordre\": 2,\r\n                \"dynamique\": false\r\n            },\r\n            {\r\n                \"id\": 13,\r\n                \"nom\": \"nombreTablier\",\r\n                \"valeur\": \"100 modifié\",\r\n                \"editable\": true,\r\n                \"supprimable\": false,\r\n                \"ordre\": 3,\r\n                \"dynamique\": false\r\n            },\r\n            {\r\n                \"id\": 14,\r\n                \"nom\": \"nombreTravee\",\r\n                \"valeur\": \"200 modifié\",\r\n                \"editable\": true,\r\n                \"supprimable\": false,\r\n                \"ordre\": 4,\r\n                \"dynamique\": false\r\n            },\r\n            {\r\n                \"id\": 15,\r\n                \"nom\": \"dispositifsRetenue\",\r\n                \"valeur\": \"dspositif modifié\",\r\n                \"editable\": true,\r\n                \"supprimable\": false,\r\n                \"ordre\": 5,\r\n                \"dynamique\": false\r\n            },\r\n            {\r\n                \"id\": 16,\r\n                \"nom\": \"typeJointsChaussee\",\r\n                \"valeur\": \"inconnu modifié\",\r\n                \"editable\": true,\r\n                \"supprimable\": false,\r\n                \"ordre\": 6,\r\n                \"dynamique\": false\r\n            }\r\n        ]\r\n    }]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/interne/ouvrages/1/attributs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"interne",
+										"ouvrages",
+										"1",
+										"attributs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "séquences capteurs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/interne/ouvrages/1/sequences-capteurs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"interne",
+										"ouvrages",
+										"1",
+										"sequences-capteurs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "séquence données mode",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "mode surveillance",
+					"item": [
+						{
+							"name": "seuils",
+							"item": [
+								{
+									"name": "seuil",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/interne/ouvrages/1/seuils-modes-surveillance",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"interne",
+												"ouvrages",
+												"1",
+												"seuils-modes-surveillance"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "seuils kpi global",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/interne/ouvrages/1/seuils-kpi-global",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"interne",
+												"ouvrages",
+												"1",
+												"seuils-kpi-global"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "modifier seuils kpi global",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"seuilGlobalL1\": 0.2,\r\n    \"seuilGlobalL2\": 0.3,\r\n    \"seuilGlobalL3\": 0.5,\r\n    \"seuilGlobalL4\": 0.7\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/interne/ouvrages/1/seuils-kpi-global",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"interne",
+												"ouvrages",
+												"1",
+												"seuils-kpi-global"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "modification seuil",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"niveau\": \"L4\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/interne/ouvrages/1/seuils-modes-surveillance",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"interne",
+												"ouvrages",
+												"1",
+												"seuils-modes-surveillance"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "historique mode surveillance",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/interne/ouvrages/1/modes-surveillances",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"interne",
+										"ouvrages",
+										"1",
+										"modes-surveillances"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "maj commentaire",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"commentaire\": \"Nouveau commentaire\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/interne/ouvrages/1/modes-surveillances/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"interne",
+										"ouvrages",
+										"1",
+										"modes-surveillances",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "changement mode",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mode\": \"RENFORCEE\",\n    \"commentaire\": \"Passage en renforcé test\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/interne/ouvrages/1/modes-surveillances",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"interne",
+										"ouvrages",
+										"1",
+										"modes-surveillances"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "mode surveillance courant",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/interne/ouvrages/1/modes-surveillances/courant",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"interne",
+										"ouvrages",
+										"1",
+										"modes-surveillances",
+										"courant"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Attributs par défaut",
+					"item": [
+						{
+							"name": "récuperer les attributs par défaut",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/interne/ouvrages/default-attributs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"interne",
+										"ouvrages",
+										"default-attributs"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "donnees historisées",
+					"item": [
+						{
+							"name": "ajouter note iqoa",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"note\": 12, \"commentaire\": \"test regex\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/interne/ouvrages/1/notes-iqoa",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"interne",
+										"ouvrages",
+										"1",
+										"notes-iqoa"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "liste ouvrages inventaire",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/inventaire?modeSurveillance=STANDARD&modeSurveillance=RENFORCEE&modeSurveillance=NON_SURVEILLE&modeSurveillance=ARCHIVE",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"inventaire"
+							],
+							"query": [
+								{
+									"key": "modeSurveillance",
+									"value": "STANDARD"
+								},
+								{
+									"key": "modeSurveillance",
+									"value": "RENFORCEE"
+								},
+								{
+									"key": "modeSurveillance",
+									"value": "NON_SURVEILLE"
+								},
+								{
+									"key": "modeSurveillance",
+									"value": "ARCHIVE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "liste ouvrages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "un ouvrage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recuperer modes propores d'un ouvrage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/1/modes-propres",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"1",
+								"modes-propres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mode calcul",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/1/mode-calcul",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"1",
+								"mode-calcul"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mode calcul",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"modeCalcul\": \"ABSOLU\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/1/mode-calcul",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"1",
+								"mode-calcul"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tableau bord",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/3/tableau-bord",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"3",
+								"tableau-bord"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "indicateur Alerte",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/3/indicateur-alerte",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"3",
+								"indicateur-alerte"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "données synchronisation sercel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/3/donnees-synchronisation-sercel",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"3",
+								"donnees-synchronisation-sercel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "données synchronisation sercel",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idOuvrage\": 3,\r\n    \"idSercel\": \"ext\",\r\n    \"modes\": [\r\n        {\r\n            \"identifiantOuvrage\": 3,\r\n            \"numeroSercel\": 31,\r\n            \"numero\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/3/donnees-synchronisation-sercel",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"3",
+								"donnees-synchronisation-sercel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajouter d'un ouvrage",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nbModes\": 3,\r\n    \"nbCapteurs\": 7,\r\n    \"identifiantPilotes\": [\"expert\"],\r\n    \"attributs\": [\r\n        {\r\n            \"id\": 1,\r\n            \"module\" : \"identification\",\r\n            \"nomChamp\" : \"den_oma\",\r\n            \"valeurChamp\": \"OA-001\",\r\n            \"obligatoire\": true,\r\n            \"actif\": true,\r\n            \"editable\": false,\r\n            \"supprimable\": false,\r\n            \"ordreGlobal\": 1,\r\n            \"ordreModule\": 1\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"module\" : \"design_build\",\r\n            \"nomChamp\" : \"annee_construction\",\r\n            \"valeurChamp\": \"2007\",\r\n            \"obligatoire\": true,\r\n            \"actif\": true,\r\n            \"editable\": false,\r\n            \"supprimable\": false,\r\n            \"ordreGlobal\": 2,\r\n            \"ordreModule\": 1\r\n        },\r\n        {\r\n            \"id\": 3,\r\n            \"module\" : \"geometry\",\r\n            \"nomChamp\" : \"length\",\r\n            \"valeurChamp\": \"111\",\r\n            \"obligatoire\": true,\r\n            \"actif\": true,\r\n            \"editable\": false,\r\n            \"supprimable\": false,\r\n            \"ordreGlobal\": 3,\r\n            \"ordreModule\": 1\r\n        },\r\n        {\r\n            \"id\": 4,\r\n            \"module\" : \"geometry\",\r\n            \"nomChamp\" : \"width\",\r\n            \"valeurChamp\": \"11\",\r\n            \"obligatoire\": true,\r\n            \"actif\": true,\r\n            \"editable\": false,\r\n            \"supprimable\": false,\r\n            \"ordreGlobal\": 4,\r\n            \"ordreModule\": 2\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/interne/ouvrages",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "supprimer un ouvrage",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "export inventaire ouvrages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/donnees-export",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"donnees-export"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pilotes ouvrages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/administration-ouvrages",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"administration-ouvrages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pilotes ouvrages",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"identifiant\": \"OA-OK-001\",\r\n        \"dateCreation\": \"2021-06-16T14:45:41.217\",\r\n        \"pilotes\": [\r\n            \"expert\", \"admin\"\r\n        ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/interne/administration-ouvrages",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"administration-ouvrages"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{auth-token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "DetailsSeuils",
+			"item": [
+				{
+					"name": "seuils des modes & capteurs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/1/details-seuils",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"1",
+								"details-seuils"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "seuils des modes & capteurs",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n        {\n            \"typeKpi\": \"FREQUENCE\",\n            \"numeroMode\": 1,\n            \"numeroCapteur\": null,\n            \"l1Absolu\": 0.22,\n            \"l1Relatif\": 0.05,\n            \"l2Absolu\": 0.60,\n            \"l2Relatif\": 0.10,\n            \"l3Absolu\": 1.2,\n            \"l3Relatif\": 0.15,\n            \"l4Absolu\": 1.8,\n            \"l4Relatif\": 0.20\n        },\n        {\n            \"typeKpi\": \"AMORTISSEMENT\",\n            \"numeroMode\": 1,\n            \"numeroCapteur\": null,\n            \"l1Absolu\": 1,\n            \"l1Relatif\": 0.05,\n            \"l2Absolu\": 2,\n            \"l2Relatif\": 0.10,\n            \"l3Absolu\": 3,\n            \"l3Relatif\": 0.15,\n            \"l4Absolu\": 4,\n            \"l4Relatif\": 0.20\n        },\n        {\n            \"typeKpi\": \"MCF\",\n            \"numeroMode\": 1,\n            \"numeroCapteur\": null,\n            \"l1Absolu\": 20,\n            \"l1Relatif\": 0.05,\n            \"l2Absolu\": 25,\n            \"l2Relatif\": 0.10,\n            \"l3Absolu\": 30,\n            \"l3Relatif\": 0.15,\n            \"l4Absolu\": 45,\n            \"l4Relatif\": 0.20\n        },\n        {\n            \"typeKpi\": \"MAC\",\n            \"numeroMode\": 1,\n            \"numeroCapteur\": null,\n            \"l1Absolu\": 0.95,\n            \"l1Relatif\": 0.05,\n            \"l2Absolu\": 0.90,\n            \"l2Relatif\": 0.10,\n            \"l3Absolu\": 0.85,\n            \"l3Relatif\": 0.15,\n            \"l4Absolu\": 0.75,\n            \"l4Relatif\": 0.20\n        },\n        {\n            \"typeKpi\": \"FREQUENCE\",\n            \"numeroMode\": 2,\n            \"numeroCapteur\": null,\n            \"l1Absolu\": 0.20,\n            \"l1Relatif\": 0.05,\n            \"l2Absolu\": 0.60,\n            \"l2Relatif\": 0.10,\n            \"l3Absolu\": 1.2,\n            \"l3Relatif\": 0.15,\n            \"l4Absolu\": 1.8,\n            \"l4Relatif\": 0.20\n        },\n        {\n            \"typeKpi\": \"AMORTISSEMENT\",\n            \"numeroMode\": 2,\n            \"numeroCapteur\": null,\n            \"l1Absolu\": 1,\n            \"l1Relatif\": 0.05,\n            \"l2Absolu\": 2,\n            \"l2Relatif\": 0.10,\n            \"l3Absolu\": 3,\n            \"l3Relatif\": 0.15,\n            \"l4Absolu\": 4,\n            \"l4Relatif\": 0.20\n        },\n        {\n            \"typeKpi\": \"MCF\",\n            \"numeroMode\": 2,\n            \"numeroCapteur\": null,\n            \"l1Absolu\": 20,\n            \"l1Relatif\": 0.05,\n            \"l2Absolu\": 25,\n            \"l2Relatif\": 0.10,\n            \"l3Absolu\": 30,\n            \"l3Relatif\": 0.15,\n            \"l4Absolu\": 45,\n            \"l4Relatif\": 0.20\n        },\n        {\n            \"typeKpi\": \"MAC\",\n            \"numeroMode\": 2,\n            \"numeroCapteur\": null,\n            \"l1Absolu\": 0.95,\n            \"l1Relatif\": 0.05,\n            \"l2Absolu\": 0.90,\n            \"l2Relatif\": 0.10,\n            \"l3Absolu\": 0.85,\n            \"l3Relatif\": 0.15,\n            \"l4Absolu\": 0.75,\n            \"l4Relatif\": 0.20\n        },\n        {\n            \"typeKpi\": \"COMAC\",\n            \"numeroMode\": null,\n            \"numeroCapteur\": 1,\n            \"l1Absolu\": 0.05,\n            \"l1Relatif\": 0.05,\n            \"l2Absolu\": 0.10,\n            \"l2Relatif\": 0.10,\n            \"l3Absolu\": 0.20,\n            \"l3Relatif\": 0.15,\n            \"l4Absolu\": 0.30,\n            \"l4Relatif\": 0.20\n        },\n        {\n            \"typeKpi\": \"COMAC\",\n            \"numeroMode\": null,\n            \"numeroCapteur\": 2,\n            \"l1Absolu\": 0.05,\n            \"l1Relatif\": 0.05,\n            \"l2Absolu\": 0.10,\n            \"l2Relatif\": 0.10,\n            \"l3Absolu\": 0.20,\n            \"l3Relatif\": 0.15,\n            \"l4Absolu\": 0.30,\n            \"l4Relatif\": 0.20\n        }\n    ]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/1/details-seuils",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"1",
+								"details-seuils"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "WIP: Start traitement",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{technicalToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urltraitement}}/interne/v1/calculs",
+							"host": [
+								"{{urltraitement}}"
+							],
+							"path": [
+								"interne",
+								"v1",
+								"calculs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lancement recalculs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{technicalToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urltraitement}}/exposee/v1/calculs/3/recalcul",
+							"host": [
+								"{{urltraitement}}"
+							],
+							"path": [
+								"exposee",
+								"v1",
+								"calculs",
+								"3",
+								"recalcul"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mac",
+			"item": [
+				{
+					"name": "Mac 4x4",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/mac/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"mac",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mac vide",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/mac/-1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"mac",
+								"-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mac 2x2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/mac/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"mac",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "calcul mac",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/mac/1?idRef=2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"mac",
+								"1"
+							],
+							"query": [
+								{
+									"key": "idRef",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DetailEtats",
+			"item": [
+				{
+					"name": "détail états",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/1/detail-etats",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"1",
+								"detail-etats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update état réf d'un ouvrage",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ancienEtatRef\": 27,\r\n    \"nouvelEtatRef\": 25\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/7/detail-etats",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"7",
+								"detail-etats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ratios alphas",
+			"item": [
+				{
+					"name": "ratios alphas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/3/alphas",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"3",
+								"alphas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ratios alphas",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"numeroMode\": 1,\n        \"frequence\": 0.45,\n        \"amortissement\": 0.15,\n        \"mcf\": 0.05,\n        \"mac\": 0.35\n    },\n    {\n        \"numeroMode\": 2,\n        \"frequence\": 0.40,\n        \"amortissement\": 0.15,\n        \"mcf\": 0.05,\n        \"mac\": 0.40\n    },\n    {\n        \"numeroMode\": 3,\n        \"frequence\": 0.40,\n        \"amortissement\": 0.10,\n        \"mcf\": 0.05,\n        \"mac\": 0.45\n    },\n    {\n        \"numeroMode\": 4,\n        \"frequence\": 0.40,\n        \"amortissement\": 0.10,\n        \"mcf\": 0.05,\n        \"mac\": 0.45\n    },\n    {\n        \"numeroMode\": 5,\n        \"frequence\": 0.40,\n        \"amortissement\": 0.10,\n        \"mcf\": 0.05,\n        \"mac\": 0.45\n    },\n    {\n        \"numeroMode\": 6,\n        \"frequence\": 0.40,\n        \"amortissement\": 0.10,\n        \"mcf\": 0.05,\n        \"mac\": 0.45\n    },\n    {\n        \"numeroMode\": 7,\n        \"frequence\": 0.40,\n        \"amortissement\": 0.10,\n        \"mcf\": 0.05,\n        \"mac\": 0.45\n    },\n    {\n        \"numeroMode\": 8,\n        \"frequence\": 0.40,\n        \"amortissement\": 0.10,\n        \"mcf\": 0.05,\n        \"mac\": 0.45\n    },\n    {\n        \"numeroMode\": 9,\n        \"frequence\": 0.40,\n        \"amortissement\": 0.10,\n        \"mcf\": 0.05,\n        \"mac\": 0.45\n    },\n    {\n        \"numeroMode\": 10,\n        \"frequence\": 0.40,\n        \"amortissement\": 0.10,\n        \"mcf\": 0.05,\n        \"mac\": 0.45\n    },\n    {\n        \"numeroMode\": 11,\n        \"frequence\": 0.40,\n        \"amortissement\": 0.10,\n        \"mcf\": 0.05,\n        \"mac\": 0.45\n    },\n    {\n        \"numeroMode\": 12,\n        \"frequence\": 0.40,\n        \"amortissement\": 0.10,\n        \"mcf\": 0.05,\n        \"mac\": 0.45\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/3/alphas",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"3",
+								"alphas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ratios phis",
+			"item": [
+				{
+					"name": "ratios phis",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/1/phis",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"1",
+								"phis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ratios phis",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"numeroCapteur\": 1,\n        \"ratio\": 0.30\n    },\n    {\n        \"numeroCapteur\": 2,\n        \"ratio\": 0.06\n    },\n    {\n        \"numeroCapteur\": 3,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 4,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 5,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 6,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 7,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 8,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 9,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 10,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 11,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 12,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 13,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 14,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 15,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 16,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 17,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 18,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 19,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 20,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 21,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 22,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 23,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 24,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 25,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 26,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 27,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 28,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 29,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 30,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 31,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 32,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 33,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 34,\n        \"ratio\": 0.02\n    },\n    {\n        \"numeroCapteur\": 35,\n        \"ratio\": 0.02\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/3/phis",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"3",
+								"phis"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "IWS",
+			"item": [
+				{
+					"name": "lancement-integration",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{technicalToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urltraitement}}/exposee/v1/iws/lancement",
+							"host": [
+								"{{urltraitement}}"
+							],
+							"path": [
+								"exposee",
+								"v1",
+								"iws",
+								"lancement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lancement-integration Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{technicalToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/exposee/v1/iws/lancement",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"exposee",
+								"v1",
+								"iws",
+								"lancement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lancement-integration ADS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{technicalToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://ads.alteca.fr/exposee/v1/iws/lancement",
+							"protocol": "http",
+							"host": [
+								"ads",
+								"alteca",
+								"fr"
+							],
+							"path": [
+								"exposee",
+								"v1",
+								"iws",
+								"lancement"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comac",
+			"item": [
+				{
+					"name": "calcul comac",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/comac/1?idRef=2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"comac",
+								"1"
+							],
+							"query": [
+								{
+									"key": "idRef",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "graphes",
+			"item": [
+				{
+					"name": "ecarts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/1/donnees-calculees?type=FREQUENCE&dateDebut=2021-02-19T09:11:05&dateFin=2021-02-21T21:11:05&idModes=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"1",
+								"donnees-calculees"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "FREQUENCE"
+								},
+								{
+									"key": "dateDebut",
+									"value": "2021-02-19T09:11:05"
+								},
+								{
+									"key": "dateFin",
+									"value": "2021-02-21T21:11:05"
+								},
+								{
+									"key": "idModes",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "evolution",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/1/donnees-modes?type=FREQUENCE&dateDebut=2021-02-19T09:11:05&dateFin=2021-02-21T21:11:05&idModes=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"1",
+								"donnees-modes"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "FREQUENCE"
+								},
+								{
+									"key": "dateDebut",
+									"value": "2021-02-19T09:11:05"
+								},
+								{
+									"key": "dateFin",
+									"value": "2021-02-21T21:11:05"
+								},
+								{
+									"key": "idModes",
+									"value": "1"
+								},
+								{
+									"key": "idModes",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ratios beta",
+			"item": [
+				{
+					"name": "Ratios Beta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwicm9sZSI6IkVYUEVSVCIsImV4cCI6MTYyMTIxOTQ0MSwiaWF0IjoxNjIxMjAxNDQxLCJqdGkiOiJkNmEyZjVmZC04ODQ2LTRlNzctOTg1Zi01ZGU4ZTRkNGNiYWEifQ.G5VXK3DAwZhoKbxqXvhXrztlsqbs7L8l0Lbst6qS7y6cTAhRJbi09fDqGbWgqkPa-KOmeHE_8qjTlt4iWnDRXg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/1/betas",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"1",
+								"betas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ratios beta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwicm9sZSI6IkVYUEVSVCIsImV4cCI6MTYyMTM3MDY1NywiaWF0IjoxNjIxMzUyNjU3LCJqdGkiOiIxOWNiNDYzYi1mMjI4LTQ4ZmMtODVlOC04MTcyNWM0Yzc5YWMifQ.TBVG4ywCQgeC46HZW6YdSDH6y3j3aTrd65Uc3Zl--hgfQIFvRd1d-11eZ1R4mvrEJf5N-XvoXjrJonnbjx_ykg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"value\": 35,\r\n        \"niveau\": \"L5\"\r\n    },\r\n    {\r\n        \"value\": 15,\r\n        \"niveau\": \"L4\"\r\n    },\r\n    {\r\n        \"value\": 30,\r\n        \"niveau\": \"L3\"\r\n    },\r\n    {\r\n        \"value\": 5,\r\n        \"niveau\": \"L2\"\r\n    },\r\n    {\r\n        \"value\": 2,\r\n        \"niveau\": \"L1\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/1/betas",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"1",
+								"betas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Documents",
+			"item": [
+				{
+					"name": "Lister documents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/1/documents",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"1",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upload document",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/1/documents",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"1",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recuperer un spectre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/ouvrages/3/etats/7/spectre",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"ouvrages",
+								"3",
+								"etats",
+								"7",
+								"spectre"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "utilisateur courant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/users/current",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"users",
+								"current"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "récuperer liste utilisateur",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "récuperer identifiants utilisateurs par role",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/interne/users/identifiants?role=CLIENT",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"users",
+								"identifiants"
+							],
+							"query": [
+								{
+									"key": "role",
+									"value": "CLIENT"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ajout Utilisateur",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identifiant\": \"user\",\r\n    \"password\": \"user\",\r\n    \"mail\": \"user@gmail.com\",\r\n    \"role\": \"CLIENT\",\r\n    \"ouvrages\": [\r\n        {\r\n            \"id\": 1\r\n        },\r\n        {\r\n            \"id\": 2\r\n        },\r\n        {\r\n            \"id\": 3\r\n        },\r\n        {\r\n            \"id\": 4\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/interne/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modifier Utilisateur",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 55,\r\n    \"identifiant\": null,\r\n    \"password\": \"user\",\r\n    \"mail\": \"test@gmail.com\",\r\n    \"role\": \"CLIENT\",\r\n    \"ouvrages\": [\r\n        {\r\n            \"id\": 1\r\n        },\r\n        {\r\n            \"id\": 2\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/interne/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interne",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Communication avec Sercel",
+			"item": [
+				{
+					"name": "01 - AccessToken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Extract access token\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.globals.set(\"access_token\", jsonData.access_token);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "api",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "apave_alteca_processing@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Ss8gwHExRPItewNP8Tlk",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api-shm.sercel.com/auth/realms/shm/protocol/openid-connect/token",
+							"protocol": "https",
+							"host": [
+								"api-shm",
+								"sercel",
+								"com"
+							],
+							"path": [
+								"auth",
+								"realms",
+								"shm",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "02 - BearerToken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Extract bearer token\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.globals.set(\"bearer_token\", jsonData.access_token);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "urn:ietf:params:oauth:grant-type:uma-ticket",
+									"type": "text"
+								},
+								{
+									"key": "audience",
+									"value": "api-authorization",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api-shm.sercel.com/auth/realms/shm/protocol/openid-connect/token",
+							"protocol": "https",
+							"host": [
+								"api-shm",
+								"sercel",
+								"com"
+							],
+							"path": [
+								"auth",
+								"realms",
+								"shm",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "03 - StructureList",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api-shm.sercel.com/api/v1/business/structure",
+							"protocol": "https",
+							"host": [
+								"api-shm",
+								"sercel",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"business",
+								"structure"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "04 - MeasuredDateList",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api-shm.sercel.com/api/v1/business/structure/03c90d97/measure/requestedDate",
+							"protocol": "https",
+							"host": [
+								"api-shm",
+								"sercel",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"business",
+								"structure",
+								"03c90d97",
+								"measure",
+								"requestedDate"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "05 - OpenSensors",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api-shm.sercel.com/api/v1/business/structure/03c90d97/measure/2021-03-30T00:00:00.000Z/point/0/openSensor/%2Fssi_structural_mode",
+							"protocol": "https",
+							"host": [
+								"api-shm",
+								"sercel",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"business",
+								"structure",
+								"03c90d97",
+								"measure",
+								"2021-03-30T00:00:00.000Z",
+								"point",
+								"0",
+								"openSensor",
+								"%2Fssi_structural_mode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "06 - Spectre",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api-shm.sercel.com/api/v1/business/structure/03c90d97/measure/2021-03-30T00:00:00.000Z/point/0/openSensor/%2Fpsd_diagram",
+							"protocol": "https",
+							"host": [
+								"api-shm",
+								"sercel",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"business",
+								"structure",
+								"03c90d97",
+								"measure",
+								"2021-03-30T00:00:00.000Z",
+								"point",
+								"0",
+								"openSensor",
+								"%2Fpsd_diagram"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "test document",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwicm9sZSI6IkVYUEVSVCIsImV4cCI6MTYyMTg3ODQ0OSwiaWF0IjoxNjIxODYwNDQ5LCJqdGkiOiI1NWQzYzA1OC05N2VkLTQyMDQtYmI3My1kNjcyNjNmMTNlMWEifQ.2b68H6n-gfBXIR6HT74C4gBz1ZClDJSpWSKcojPPPmonJMleALVHthLXKJr0apfnmyG6_ywdV7veCyXij8JR6g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/jerem/Images/Capture d’écran de 2021-02-18 14-37-16.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://ads.alteca.fr/rest/interne/ouvrages/2/documents",
+					"protocol": "https",
+					"host": [
+						"ads",
+						"alteca",
+						"fr"
+					],
+					"path": [
+						"rest",
+						"interne",
+						"ouvrages",
+						"2",
+						"documents"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{auth-token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

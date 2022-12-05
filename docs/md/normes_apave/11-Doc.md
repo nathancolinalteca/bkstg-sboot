@@ -1,0 +1,6 @@
+- Fichier README.md à la racine + liens vers autres fichiers .md stockés dans "doc-files".
+- Documentation technique à destination des développeurs. Les autres docs du projet doivent être dans Alfresco.
+- Images dans "doc-files/images".
+- Doc liée au code source, donc versionnée avec lui.
+- Ne pas documenter de fonctionnalité non implémentées. C'est le rôle des SFD.
+- Ne pas perdre de temps à documenter des objets. C'est le rôle du Swagger et des javadocs.

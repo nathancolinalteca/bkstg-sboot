@@ -1,0 +1,304 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "API Gestion des Accès",
+    "version" : "3",
+    "title" : "GestAcces API - Exposed v3",
+    "termsOfService" : "terms-of-service",
+    "contact" : {
+      "name" : "Vincent DEVOS",
+      "url" : "https://www.apave.com",
+      "email" : "vincent.devos@apave.com"
+    }
+  },
+  "host" : "{{url}}",
+  "basePath" : "/GestaccesPlus-Service/apave/rest",
+  "tags" : [ {
+    "name" : "Collaborateur"
+  } ],
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/v3/utilisateurs" : {
+      "post" : {
+        "tags" : [ "Collaborateur" ],
+        "summary" : "Créer ou mettre à jour un utilisateur",
+        "description" : "",
+        "operationId" : "createReplaceUtilisateur",
+        "produces" : [ "application/json;charset=utf-8" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "L'utilisateur à créer ou à mettre à jour",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/PivotCollaborateurDTOF"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Créé ou mis à jour avec succès"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      }
+    },
+    "/v3/utilisateurs/{codeutilisateur}/applications/{codeapp}" : {
+      "get" : {
+        "tags" : [ "Collaborateur" ],
+        "summary" : "Récupérer la liste des rôles affectés à un utilisateur pour une application donnée",
+        "description" : "",
+        "operationId" : "getUserRoles",
+        "produces" : [ "application/json;charset=utf-8" ],
+        "parameters" : [ {
+          "name" : "codeutilisateur",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "codeapp",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Succès",
+            "schema" : {
+              "$ref" : "#/definitions/ProfilUtilisateurDTOF"
+            }
+          },
+          "404" : {
+            "description" : "Utilisateur ou Rôle non trouvé"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "AffectationPrincipaleDTOF" : {
+      "type" : "object",
+      "properties" : {
+        "idCollaborateur" : {
+          "$ref" : "#/definitions/IdCollaborateurDTOF"
+        },
+        "dateDebut" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "dateFin" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "idGroupeAnalytique" : {
+          "$ref" : "#/definitions/IdentifiantGroupeAnalytiqueDTOF"
+        },
+        "codeTypeContrat" : {
+          "type" : "string"
+        },
+        "codeCategorie" : {
+          "type" : "string"
+        },
+        "pourcentagePresence" : {
+          "$ref" : "#/definitions/Number"
+        }
+      },
+      "description" : "Format Pivot Collaborateur - Bloc Affectation Principale"
+    },
+    "CollaborateurDTOF" : {
+      "type" : "object",
+      "properties" : {
+        "idCollaborateur" : {
+          "$ref" : "#/definitions/IdCollaborateurDTOF"
+        },
+        "codeCivilite" : {
+          "type" : "string"
+        },
+        "nom" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "dateSortie" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "typeCollaborateur" : {
+          "type" : "string",
+          "enum" : [ "INT", "EXT" ]
+        },
+        "estUtilisateur" : {
+          "type" : "boolean"
+        },
+        "codeUtilisateur" : {
+          "type" : "string"
+        },
+        "affectationsPrincipales" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AffectationPrincipaleDTOF"
+          }
+        },
+        "tracesEnregistrements" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/TraceEnregistrementDTOF"
+          }
+        }
+      },
+      "description" : "Format Pivot Collaborateur - Bloc Collaborateur"
+    },
+    "DroitDTOF" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "string"
+        },
+        "libelle" : {
+          "type" : "string"
+        },
+        "typeDroit" : {
+          "type" : "string",
+          "description" : "Type de droit sur un caractère (R, W)"
+        }
+      },
+      "description" : "Droit d'une Application"
+    },
+    "IdCollaborateurDTOF" : {
+      "type" : "object",
+      "properties" : {
+        "codeCollaborateur" : {
+          "type" : "string"
+        },
+        "codeSociete" : {
+          "type" : "string"
+        },
+        "matricule" : {
+          "type" : "string"
+        },
+        "codeEntite" : {
+          "type" : "string"
+        }
+      },
+      "description" : "Format Pivot Collaborateur - Bloc idCollaborateur"
+    },
+    "IdentifiantGroupeAnalytiqueDTOF" : {
+      "type" : "object",
+      "properties" : {
+        "codeAgence" : {
+          "type" : "string"
+        },
+        "codeUnite" : {
+          "type" : "string"
+        },
+        "codeGroupe" : {
+          "type" : "string"
+        }
+      },
+      "description" : "Format Pivot Collaborateur - AffectationPrincipale - Bloc identifiantGroupeAnalytique"
+    },
+    "Number" : {
+      "type" : "object"
+    },
+    "PivotCollaborateurDTOF" : {
+      "type" : "object",
+      "properties" : {
+        "collaborateur" : {
+          "$ref" : "#/definitions/CollaborateurDTOF"
+        }
+      },
+      "description" : "Format Pivot Collaborateur - Bloc Collaborateur"
+    },
+    "ProfilUtilisateurDTOF" : {
+      "type" : "object",
+      "properties" : {
+        "collaborateur" : {
+          "$ref" : "#/definitions/CollaborateurDTOF"
+        },
+        "roles" : {
+          "type" : "array",
+          "description" : "Liste des rôles attribués à l'utilisateur",
+          "items" : {
+            "$ref" : "#/definitions/RoleDTOF"
+          }
+        },
+        "droits" : {
+          "type" : "array",
+          "description" : "Liste des droits attribués à l'utilisateur",
+          "items" : {
+            "$ref" : "#/definitions/DroitDTOF"
+          }
+        }
+      },
+      "description" : "Profil d'un Utilisateur"
+    },
+    "RoleDTOF" : {
+      "type" : "object",
+      "required" : [ "estDefault", "estRestreint" ],
+      "properties" : {
+        "code" : {
+          "type" : "string"
+        },
+        "libelle" : {
+          "type" : "string"
+        },
+        "estDefault" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Rôle par défaut ?"
+        },
+        "estRestreint" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Rôle restreint ?"
+        },
+        "perimetres" : {
+          "type" : "array",
+          "description" : "Liste des périmètres du rôle",
+          "items" : {
+            "$ref" : "#/definitions/RolePerimetreDTOF"
+          }
+        }
+      },
+      "description" : "Rôle d'une Application"
+    },
+    "RolePerimetreDTOF" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "string"
+        },
+        "valeurs" : {
+          "type" : "array",
+          "description" : "Liste des valeurs du périmètre",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      },
+      "description" : "Périmètre d'un Rôle"
+    },
+    "TraceEnregistrementDTOF" : {
+      "type" : "object",
+      "properties" : {
+        "operation" : {
+          "type" : "string",
+          "enum" : [ "M", "D", "C" ]
+        },
+        "utilisateur" : {
+          "type" : "string"
+        },
+        "date" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      },
+      "description" : "Format Pivot - Bloc traceEnregistrement"
+    }
+  }
+}
