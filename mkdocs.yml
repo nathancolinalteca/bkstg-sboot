@@ -2,6 +2,11 @@ site_name: 'sboot-docs'
 
 nav:
   - Home: index.md
+  - Bonnes pratiques: md/bonnes_pratiques.md
+  - MPD: mpd/mpd.svg
+  - Base de données via liquibase: md/injection_donnees_liquibase.md
+  - Normes de développement Apave: md/normes_apave.md
+  - Fonctionnement du batch de traitement: md/solutions_techniques/batch_traitement.md
 
 plugins:
   - techdocs-core

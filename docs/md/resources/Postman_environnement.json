@@ -1,0 +1,39 @@
+{
+	"id": "29e1886a-e239-46fd-bd46-d97263faad9c",
+	"name": "APS Local",
+	"values": [
+		{
+			"key": "url",
+			"value": "http://localhost:8080",
+			"enabled": true
+		},
+		{
+			"key": "login",
+			"value": "expert",
+			"enabled": true
+		},
+		{
+			"key": "password",
+			"value": "123456",
+			"enabled": true
+		},
+		{
+			"key": "auth-token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwicm9sZSI6IkVYUEVSVCIsImV4cCI6MTYxNjE4Mzc4NywiaWF0IjoxNjE2MTY1Nzg3LCJqdGkiOiJlMDQ2MGVmYS0wMjQxLTQ4YjUtOWI3Ny0xYjYwMGQwNGMwN2IifQ.7AERJtIHnbJ24Bgj-s1v1v0Vq9ygPn5dsxCDnxftiUmdOc7ANgIc6Vxcx_GuBPSHzKmoE1aa01wy3PIdX0JfIQ",
+			"enabled": true
+		},
+		{
+			"key": "urltraitement",
+			"value": "http://localhost:8081",
+			"enabled": true
+		},
+		{
+			"key": "technicalToken",
+			"value": "3wv^SbH0%DKVHju+",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2021-06-01T13:16:49.129Z",
+	"_postman_exported_using": "Postman/8.5.1"
+}
